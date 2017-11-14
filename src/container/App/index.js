@@ -8,6 +8,8 @@ class App extends Component {
   constructor(props) {
       super(props); // remember we are inheriting from Component. We still want to call the parent initializer
 
+      this.addItem = this.addItem.bind(this);
+
       this.state = {
         Items: [
           {
@@ -42,10 +44,19 @@ class App extends Component {
       }; // that's it :)
     }
 
+  addItem(item) {
+    this.setState(
+      {
+        Items: this.state.Items.concat(item)
+      }
+    );
+  }
+
   render() {
     return (
       <div>
-        <Shop items={ this.state.Items } />
+        <Shop items={ this.state.Items } addItem={ this.addItem } />
+
       </div>
     );
   }
