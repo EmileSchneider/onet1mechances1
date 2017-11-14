@@ -30,6 +30,13 @@ class App extends Component {
             price: "75$",
             description: "YOU NEED THIS WATCH IN YOUR LIFE!",
             deliverytime: 13
+          },
+          {
+            name: "excellent watch",
+            file: "https://ae01.alicdn.com/kf/HTB1L1U4OFXXXXbWXFXXq6xXFXXXl/Uhren-M-nner-Megir-Marke-Mens-Chronograph-Lederband-Quarz-Leuchtende-Armbanduhr-Mode-M-nnlichen-Wasserdicht-Military.jpg_640x640.jpg_.webp",
+            price: "125$",
+            description: "you will die soon, and alone if you have not this watch in ur life",
+            deliverytime: 1
           }
         ]
       }; // that's it :)

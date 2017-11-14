@@ -27,28 +27,6 @@ class Shop extends Component {
                   })
                 }
               </Row>
-              <Row>
-                {
-                  this.props.items.map( (item, index) => {
-                    return(
-                      <Col lg={4}>
-                        <Item title={ item.name } description={ item.description } src={ item.file } price={ item.price }/>
-                      </Col>
-                    );
-                  })
-                }
-              </Row>
-              <Row>
-                {
-                  this.props.items.map( (item, index) => {
-                    return(
-                      <Col lg={2}>
-                        <Item title={ item.name } description={ item.description } src={ item.file } price={ item.price }/>
-                      </Col>
-                    );
-                  })
-                }
-              </Row>
             </Grid>
           </Tab>
           <Tab label="Other Stuff">
