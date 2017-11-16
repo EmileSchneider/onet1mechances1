@@ -28,5 +28,12 @@
       "description": "you will die soon, and alone if you have not this watch in ur life",
       "deliverytime": 1
     }
-  ]
+  ],
+  "newItem": {
+    "name": "",
+    "file": "",
+    "price": "",
+    "description": "",
+    "deliverytime": ""
+  }
 }

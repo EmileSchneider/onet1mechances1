@@ -9,10 +9,13 @@ class Item extends Component {
   render() {
     return(
         <Card className="ItemCard">
+          <CardHeader>
+            {this.props.title}
+          </CardHeader>
           <CardMedia
             overlay={<CardTitle title={ this.props.title }/>}
           >
-            <img src={ this.props.src } />
+            <img src={ this.props.src } alt="well its missing..." />
           </CardMedia>
           <CardTitle title={ this.props.title } subtitle={ this.props.subtitle } />
           <CardText>

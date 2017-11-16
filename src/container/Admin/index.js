@@ -6,7 +6,6 @@ import Itemeditor from '../../presentational/Itemeditor';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-import Button from 'react-bootstrap/lib/Button';
 import AppBar from 'material-ui/AppBar';
 
 class Admin extends Component {
@@ -20,7 +19,7 @@ class Admin extends Component {
       description: ''
     }
 
-    this.addSrc = (src) {
+    this.addSrc = (src) => {
       let s = this.getState();
       s.src = src;
       this.setState(s);
@@ -34,7 +33,7 @@ class Admin extends Component {
         <Grid>
           <Row>
             <Col lg={6}>
-              <Itemeditor/>
+              <Itemeditor f={this.addSrc}/>
             </Col>
             <Col lg={6}>
               <Item/>
