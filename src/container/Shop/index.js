@@ -12,6 +12,7 @@ import Button from 'react-bootstrap/lib/Button';
 
 import TextField from 'material-ui/TextField';
 
+import { addWatch } from '../../store/actions';
 
 class Shop extends Component {
   constructor(props){
@@ -24,7 +25,14 @@ class Shop extends Component {
       description: "new watch was added to the list",
       deliverytime: 21
     }
+
   }
+
+  handleAddWatch = (watch) => {
+    const action = addWatch(watch);
+    store.dispatch(action);
+  }
+
   render() {
     return(
       <div>
@@ -35,15 +43,15 @@ class Shop extends Component {
           <Tab label="Buy Watches">
             <Grid fluid={true}>
               <Row>
-                {
-                  this.props.items.map( (item, index) => {
-                    return(
-                      <Col lg={3}>
-                        <Item title={ item.name } description={ item.description } src={ item.file } price={ item.price }/>
-                      </Col>
-                    );
-                  })
-                }
+              {
+                this.props.items.map( (item, index) => {
+                  return(
+                    <Col lg={3}>
+                    <Item title={ item.name } description={ item.description } src={ item.file } price={ item.price }/>
+                    </Col>
+                  );
+                })
+              }
               </Row>
             </Grid>
           </Tab>
@@ -61,7 +69,7 @@ class Shop extends Component {
               <TextField
                 hintText="description of watch"
               />
-              <input type="btn" onClick={ () => this.props.addItem(this.b) } />
+              <input type="btn" onClick={ this.handleAddWatch(this.b) } />
             </div>
           </Tab>
         </Tabs>
