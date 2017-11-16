@@ -10,23 +10,23 @@ import Button from 'react-bootstrap/lib/Button';
 import AppBar from 'material-ui/AppBar';
 
 class Admin extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
+
     this.state = {
       src: '',
       title: '',
-      price: '',
+      subtitle: '',
       description: ''
     }
-    this.makeEdit = (isrc, ititle, iprice, idescription) => {
-      this.setState({
-        src: isrc,
-        title: ititle,
-        price: iprice,
-        description: idescription
-      })
+
+    this.addSrc = (src) {
+      let s = this.getState();
+      s.src = src;
+      this.setState(s);
     }
   }
+
   render(){
     return(
       <div>
@@ -34,10 +34,10 @@ class Admin extends Component {
         <Grid>
           <Row>
             <Col lg={6}>
-              <Itemeditor f={ this.makeEdit }/>
+              <Itemeditor/>
             </Col>
             <Col lg={6}>
-              <Item src={ this.state.src } title={ this.state.title } price={ this.state.price } description={ this.state.description  }/>
+              <Item/>
             </Col>
           </Row>
         </Grid>

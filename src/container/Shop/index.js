@@ -8,33 +8,14 @@ import Item from '../../presentational/Item';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-import Button from 'react-bootstrap/lib/Button';
 
-import TextField from 'material-ui/TextField';
 
-import { addWatch } from '../../store/actions';
+import { makeList } from '../../store/actions';
 import store from '../../store';
 
 class Shop extends Component {
-  constructor(props){
-    super(props);
-
-    this.b = {
-      name: "new Watch",
-      file: "https://ae01.alicdn.com/kf/HTB1d6ypRVXXXXcXXFXXq6xXFXXXW/Xiaomi-Amazfit-Smart-Sportuhr-1-34-inchTouch-screen-GPS-Rekord-Zirkonia-Keramik-Pulsmesser-Speichern-musik-GlobalVersion.jpg_640x640.jpg_.webp",
-      price: "25333333$",
-      description: "new watch was added to the list",
-      deliverytime: 21
-    }
-
-  }
-
-  handleAddWatch = (watch) => {
-    const action = addWatch(watch);
-    store.dispatch(action);
-  }
-
   render() {
+    const state = store.getState()
     return(
       <div>
       <AppBar
@@ -44,34 +25,25 @@ class Shop extends Component {
           <Tab label="Buy Watches">
             <Grid fluid={true}>
               <Row>
-              {
-                this.props.items.map( (item, index) => {
-                  return(
-                    <Col lg={3}>
-                    <Item title={ item.name } description={ item.description } src={ item.file } price={ item.price }/>
-                    </Col>
-                  );
-                })
-              }
+                <h1>
+                  {
+                    state.Items.map( (item) => {
+                      return(
+                      <Col lg={3}>
+                        <Item title={ item.name } src={ item.file } subtitle={ item.description } />
+                      </Col>
+                      );
+                    })
+                  }
+                </h1>
               </Row>
             </Grid>
           </Tab>
           <Tab label="Other Stuff">
-            <div>
-              <TextField
-                hintText="Insert Watch Name"
-              />
-              <TextField
-                hintText="Insert link to image (rightclick => open image in new tag => copy url)"
-              />
-              <TextField
-                hintText="Price of watch with $"
-              />
-              <TextField
-                hintText="description of watch"
-              />
-              <input type="btn" onClick={ this.handleAddWatch(this.b) } />
-            </div>
+            <Grid>
+              <Row>
+              </Row>
+            </Grid>
           </Tab>
         </Tabs>
       </div>

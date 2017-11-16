@@ -15,21 +15,15 @@ class Itemeditor extends Component {
         <CardMedia
           overlay={<input/>}
         >
-          <img src={ this.props.src } />
-          <input/>
+          <img/>
         </CardMedia>
-        <CardTitle title={ this.props.title } subtitle={ this.props.price } />
-        <input/>
-        <input/>
+        <CardTitle title={ <input/> } subtitle={ <input/> } />
         <CardText>
           <input width="48" height="48"/>
         </CardText>
         <CardActions>
           <FlatButton label="Instant Buy" />
         </CardActions>
-        {
-          this.props.f("nope", "a edited watch", "25%", "das")
-        }
       </Card>
     );
   }

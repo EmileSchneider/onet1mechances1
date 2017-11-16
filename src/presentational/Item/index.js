@@ -10,11 +10,11 @@ class Item extends Component {
     return(
         <Card className="ItemCard">
           <CardMedia
-            overlay={<CardTitle title={ this.props.description }/>}
+            overlay={<CardTitle title={ this.props.title }/>}
           >
             <img src={ this.props.src } />
           </CardMedia>
-          <CardTitle title={ this.props.title } subtitle={ this.props.price } />
+          <CardTitle title={ this.props.title } subtitle={ this.props.subtitle } />
           <CardText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
