@@ -6,26 +6,35 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 class Item extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { shadow: 1 }
+  }
+
+  onMouseOver = () => this.setState({ shadow: 5 });
+  onMouseOut = () => this.setState({ shadow: 1 });
+
   render() {
     return(
-        <Card className="ItemCard">
+        <Card className="ItemCard"
+            onMouseOver={this.onMouseOver}
+            onMouseOut={this.onMouseOut}
+            zDepth={this.state.shadow}
+        >
           <CardHeader>
             {this.props.title}
           </CardHeader>
-          <CardMedia
-            overlay={<CardTitle title={ this.props.title }/>}
-          >
+          <CardMedia>
             <img src={ this.props.src } alt="well its missing..." />
           </CardMedia>
-          <CardTitle title={ this.props.title } subtitle={ this.props.subtitle } />
+          <CardTitle title={ this.props.price } />
           <CardText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+            {
+              this.props.description
+            }
           </CardText>
           <CardActions>
-            <FlatButton label="Instant Buy" />
+            <FlatButton label={"Instant Buy and get it in " + this.props.deliverytime + " days" }/>
           </CardActions>
         </Card>
     );

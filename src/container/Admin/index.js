@@ -8,23 +8,9 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import AppBar from 'material-ui/AppBar';
 
+import store from '../../store';
+
 class Admin extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      src: '',
-      title: '',
-      subtitle: '',
-      description: ''
-    }
-
-    this.addSrc = (src) => {
-      let s = this.getState();
-      s.src = src;
-      this.setState(s);
-    }
-  }
 
   render(){
     return(
@@ -33,10 +19,10 @@ class Admin extends Component {
         <Grid>
           <Row>
             <Col lg={6}>
-              <Itemeditor f={this.addSrc}/>
+              <Itemeditor f={ this.addSrc }/>
             </Col>
             <Col lg={6}>
-              <Item/>
+              <Item src={ store.getState().newItem.src } title={ store.getState().newItem.title } subtitle={ store.getState().newItem.subtitle } description={ store.getState().newItem.description }/>
             </Col>
           </Row>
         </Grid>

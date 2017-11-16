@@ -6,13 +6,17 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import store from '../../store';
 
-import { setFile } from '../../store/actions.js';
+import { setName } from '../../store/actions.js';
+
 
 class Itemeditor extends Component {
-  handleChange(e){
-    console.log(e);
-    store.dispatch(setFile(e))
-    console.log(store.getState().newItem);
+  constructor(props){
+    super(props);
+
+    this.handleClick = () => {
+      store.dispatch(setName("namme"))
+      console.log(store.getState());
+    }
   }
   render(){
     return(
@@ -26,14 +30,14 @@ class Itemeditor extends Component {
           <img src="http://via.placeholder.com/350x350" alt='we are working on putting an here'/>
         </CardMedia>
 
-        <CardTitle title={<input onClick={ this.handleChange("http://via.placeholder.com/350x550") }/>} subtitle={"soone" } />
+        <CardTitle title={<input />} subtitle={"soone" } />
         <CardText>
         </CardText>
         <CardActions>
           <FlatButton label="Instant Buy" />
         </CardActions>
       </Card>
-      <FloatingActionButton onClick={this.props.f}>
+      <FloatingActionButton onClick={ this.handleClick } >
         { "Add Item" }
       </FloatingActionButton>
       </div>

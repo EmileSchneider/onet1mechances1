@@ -17,7 +17,7 @@ export const SET_DELIV = 'SET_DELIV';
 export function setName(name){
   return(
     {
-      type: SET_NAME,
+      type: 'SET_NAME',
       data: name
     }
   );
@@ -26,7 +26,7 @@ export function setName(name){
 export function setFile(file){
   return(
     {
-      type: SET_FILE,
+      type: 'SET_FILE',
       data: file
     }
   );
@@ -34,7 +34,7 @@ export function setFile(file){
 export function setPrice(price){
   return(
     {
-      type: SET_PRICE,
+      type: 'SET_PRICE',
       data: price
     }
   );
@@ -42,7 +42,7 @@ export function setPrice(price){
 export function setDescr(descr){
   return(
     {
-      type: SET_DESCR,
+      type: 'SET_DESCR',
       data: descr
     }
   );
@@ -50,7 +50,7 @@ export function setDescr(descr){
 export function setDeliv(deliv){
   return(
     {
-      type: SET_DELIV,
+      type: 'SET_DELIV',
       data: deliv
     }
   );

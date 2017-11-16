@@ -28,7 +28,7 @@ class Shop extends Component {
                     state.Items.map( (item) => {
                       return(
                       <Col lg={3}>
-                        <Item title={ item.name } src={ item.file } subtitle={ item.description } />
+                        <Item title={ item.name } src={ item.file } price={ item.price } description={ item.description } deliverytime={ item.deliverytime }/>
                       </Col>
                       );
                     })
