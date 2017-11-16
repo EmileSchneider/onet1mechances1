@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/lib/Button';
 import TextField from 'material-ui/TextField';
 
 import { addWatch } from '../../store/actions';
+import store from '../../store';
 
 class Shop extends Component {
   constructor(props){

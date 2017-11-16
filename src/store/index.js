@@ -1,5 +1,7 @@
 import { createStore } from 'redux';
 
-import reducer from './reducers';
+import { addWatch } from './reducers';
 
-export default createStore(reducer);
+let store = createStore(addWatch)
+
+export default store;
