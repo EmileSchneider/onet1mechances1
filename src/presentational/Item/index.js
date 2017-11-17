@@ -8,10 +8,20 @@ import FlatButton from 'material-ui/FlatButton';
 class Item extends Component {
   constructor(props) {
     super(props);
-    this.state = { shadow: 1 }
+    this.state = {
+      shadow: 1,
+      name: "",
+      file: "",
+      price: "",
+      description: "",
+      deliverytime: "X"
+     }
   }
 
-  onMouseOver = () => this.setState({ shadow: 5 });
+  onMouseOver = () => {
+    this.setState(this.props.object)
+    this.setState({ shadow: 5 });
+  }
   onMouseOut = () => this.setState({ shadow: 1 });
 
   render() {
@@ -22,19 +32,19 @@ class Item extends Component {
             zDepth={this.state.shadow}
         >
           <CardHeader>
-            {this.props.title}
+            {this.state.name}
           </CardHeader>
           <CardMedia>
-            <img src={ this.props.src } alt="well its missing..." />
+            <img src={ this.state.file } alt="1Time Chance! Hover me!" />
           </CardMedia>
-          <CardTitle title={ this.props.price } />
+          <CardTitle title={ this.state.price } />
           <CardText>
             {
-              this.props.description
+              this.state.description
             }
           </CardText>
           <CardActions>
-            <FlatButton label={"Instant Buy and get it in " + this.props.deliverytime + " days" }/>
+            <FlatButton label={"Instant Buy and get it in " + this.state.deliverytime + " days" }/>
           </CardActions>
         </Card>
     );

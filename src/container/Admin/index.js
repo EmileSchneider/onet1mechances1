@@ -11,6 +11,25 @@ import AppBar from 'material-ui/AppBar';
 import store from '../../store';
 
 class Admin extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      name: "",
+      file: "",
+      price: "",
+      description: "",
+      deliverytime: 0
+    }
+    this.setTheState = this.setTheState.bind(this)
+
+  }
+
+  setTheState(event, value) {
+    event.preventDefault();
+    this.setState(value);
+    console.log(this.state);
+  }
 
   render(){
     return(
@@ -19,10 +38,11 @@ class Admin extends Component {
         <Grid>
           <Row>
             <Col lg={6}>
-              <Itemeditor f={ this.addSrc }/>
+              <Itemeditor f={ this.setTheState }/>
             </Col>
             <Col lg={6}>
-              <Item src={ store.getState().newItem.src } title={ store.getState().newItem.title } subtitle={ store.getState().newItem.subtitle } description={ store.getState().newItem.description }/>
+              <Item object={this.state}/>
+      
             </Col>
           </Row>
         </Grid>

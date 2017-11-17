@@ -11,9 +11,11 @@ import Col from 'react-bootstrap/lib/Col';
 
 import store from '../../store';
 
+import data from '../../watches.json';
+
 class Shop extends Component {
   render() {
-    const state = store.getState()
+    const state = data.Items
     return(
       <div>
       <AppBar
@@ -25,10 +27,10 @@ class Shop extends Component {
               <Row>
                 <h1>
                   {
-                    state.Items.map( (item) => {
+                    state.map( (item) => {
                       return(
                       <Col lg={3}>
-                        <Item title={ item.name } src={ item.file } price={ item.price } description={ item.description } deliverytime={ item.deliverytime }/>
+                        <Item object={item}/>
                       </Col>
                       );
                     })
