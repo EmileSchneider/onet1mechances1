@@ -25,10 +25,8 @@ class Admin extends Component {
 
   }
 
-  setTheState(event, value) {
-    event.preventDefault();
+  setTheState(value) {
     this.setState(value);
-    console.log(this.state);
   }
 
   render(){
@@ -42,7 +40,6 @@ class Admin extends Component {
             </Col>
             <Col lg={6}>
               <Item object={this.state}/>
-      
             </Col>
           </Row>
         </Grid>

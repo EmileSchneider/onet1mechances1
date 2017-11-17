@@ -3,10 +3,14 @@ import React, { Component } from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
+import EnterTextField from 'material-ui-submit-field';
+
 // import store from '../../store';
 // import { setName } from '../../store/actions.js';
-
 import './index.css'
+
+var fs = require('fs');
+
 
 class Itemeditor extends Component {
   constructor(props) {
@@ -19,34 +23,23 @@ class Itemeditor extends Component {
     };
 
     this.descriptionHandleChange = this.descriptionHandleChange.bind(this);
-    this.descriptionHandleSubmit = this.descriptionHandleSubmit.bind(this);
-
     this.priceHandleChange = this.priceHandleChange.bind(this);
-    this.priceHandleSubmit = this.priceHandleSubmit.bind(this);
-
     this.fileHandleChange = this.fileHandleChange.bind(this);
-    this.fileHandleSubmit = this.fileHandleSubmit.bind(this);
-
     this.nameHandleChange = this.nameHandleChange.bind(this);
-    this.nameHandleSubmit = this.nameHandleSubmit.bind(this);
+
 
   }
 
   descriptionHandleChange(event) {
+    console.log(event.target.value);
     this.setState({description: event.target.value});
-  }
-
-  descriptionHandleSubmit(event) {
-    this.props.f(event, {description: this.state.description})
-    event.preventDefault();
+    console.log(this.state);
+    this.props.f({description: this.state.description})
   }
 
 
   priceHandleChange(event) {
     this.setState({price: event.target.value});
-  }
-
-  priceHandleSubmit(event) {
     this.props.f(event, {price: this.state.price})
     event.preventDefault();
   }
@@ -54,9 +47,6 @@ class Itemeditor extends Component {
 
   fileHandleChange(event) {
     this.setState({file: event.target.value});
-  }
-
-  fileHandleSubmit(event) {
     this.props.f(event, {file: this.state.file})
     event.preventDefault();
   }
@@ -64,70 +54,35 @@ class Itemeditor extends Component {
 
   nameHandleChange(event) {
     this.setState({name: event.target.value});
-  }
-
-  nameHandleSubmit(event) {
     this.props.f(event, {name: this.state.name})
     event.preventDefault();
-  }
 
+  }
 
   render(){
     return(
-      <div>
-      <Card className="ItemCard">
-
-      <CardHeader>
-        <form onSubmit={this.nameHandleSubmit}>
-        <label>
-          Name:
-          <input type="text" onChange={this.nameHandleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-      </CardHeader>
+      <div className="cardDiv">
+      <Card>
+        <EnterTextField className="ETF" id="name" hintText="name"
+            onEnterKeyPress={(event) => this.nameHandleChange(event)} />
         <CardMedia
-          overlay={"soone"}
+          overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
         >
-
-          <img src="http://via.placeholder.com/350x350" alt='we are working on putting an here'/>
-
+          <img src="http://via.placeholder.com/350x350" alt="" />
         </CardMedia>
-        <form onSubmit={this.fileHandleSubmit}>
-        <label>
-        file:
-        <input type="text" onChange={this.fileHandleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-        </form>
-        <CardTitle title={"Price"} subtitle={"soone" } />
-
-        <form onSubmit={this.priceHandleSubmit}>
-        <label>
-          price:
-          <input type="text" onChange={this.priceHandleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-        </form>
-
-        <CardText>
-
-
-        <form onSubmit={this.descriptionHandleSubmit}>
-        <label>
-          description:
-          <input type="text" onChange={this.descriptionHandleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-        </form>
-
-
-        </CardText>
+        <EnterTextField className="ETF" id="file" hintText="file"
+            onEnterKeyPress={(event) => this.fileHandleChange(event)} />
+            <br/>
+        <EnterTextField className="ETF" hintText="Price" id="price"
+            onEnterKeyPress={(event) => this.priceHandleChange(event)} />
+            <br/>
+        <EnterTextField className="ETF" id="text" hintText="description"
+          onEnterKeyPress={(event) => this.descriptionHandleChange(event)}
+        />
         <CardActions>
-          <FlatButton label="Instant Buy" />
+          <FlatButton label="Instant Buy No Regrets Orgasmic Afterlife" />
         </CardActions>
       </Card>
-
       </div>
     );
   }
