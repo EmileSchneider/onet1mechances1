@@ -4,6 +4,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 import EnterTextField from 'material-ui-submit-field';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 // import store from '../../store';
 // import { setName } from '../../store/actions.js';
@@ -21,40 +22,41 @@ class Itemeditor extends Component {
       file: '',
       name: '',
     };
-
     this.descriptionHandleChange = this.descriptionHandleChange.bind(this);
     this.priceHandleChange = this.priceHandleChange.bind(this);
     this.fileHandleChange = this.fileHandleChange.bind(this);
     this.nameHandleChange = this.nameHandleChange.bind(this);
-
-
+    this.updateCard = this.updateCard.bind(this);
   }
 
   descriptionHandleChange(event) {
     console.log(event.target.value);
+    console.log(this.state);
     this.setState({description: event.target.value});
     console.log(this.state);
-    this.props.f({description: this.state.description})
+
   }
 
-
+  updateCard(){
+    this.props.f({description: this.state.description});
+    this.props.f({price: this.state.price})
+    this.props.f({name: this.state.name})
+    this.props.f({file: this.state.file})
+  }
   priceHandleChange(event) {
     this.setState({price: event.target.value});
-    this.props.f(event, {price: this.state.price})
     event.preventDefault();
   }
 
 
   fileHandleChange(event) {
     this.setState({file: event.target.value});
-    this.props.f(event, {file: this.state.file})
     event.preventDefault();
   }
 
 
   nameHandleChange(event) {
     this.setState({name: event.target.value});
-    this.props.f(event, {name: this.state.name})
     event.preventDefault();
 
   }
@@ -64,7 +66,9 @@ class Itemeditor extends Component {
       <div className="cardDiv">
       <Card>
         <EnterTextField className="ETF" id="name" hintText="name"
-            onEnterKeyPress={(event) => this.nameHandleChange(event)} />
+            onEnterKeyPress={(event) => {
+              this.nameHandleChange(event);
+            }} />
         <CardMedia
           overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
         >
@@ -77,11 +81,16 @@ class Itemeditor extends Component {
             onEnterKeyPress={(event) => this.priceHandleChange(event)} />
             <br/>
         <EnterTextField className="ETF" id="text" hintText="description"
-          onEnterKeyPress={(event) => this.descriptionHandleChange(event)}
+          onEnterKeyPress={(event) => {
+            this.descriptionHandleChange(event)
+          }}
         />
         <CardActions>
           <FlatButton label="Instant Buy No Regrets Orgasmic Afterlife" />
         </CardActions>
+        <FloatingActionButton onClick={this.updateCard} secondary={true} className="button">
+          <p>Update Card</p>
+        </FloatingActionButton>
       </Card>
       </div>
     );
